@@ -64,3 +64,48 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## EN CASO DE DESCARGAR COPIA DE LARAVEL 
+
+Si descargamos una copia de laravel de github hacer lo siguiente:
+
+- **[-El primer paso fue instalar composer dentro de la carpeta del proyecto]**
+
+ composer install
+
+- **[-Después cambiar el nombre del .env.example por .env]**
+ mv .env.example .env
+
+- **[-limpiar cache]**
+
+ php artisan cache:clear
+ composer dump-autoload
+
+- **[-y por último generar el key]**
+
+php artisan key:generate
+
+- **[----------------------]**
+THE CODE TO COPY AND PASTE
+composer install 
+mv .env.example .env 
+php artisan cache:clear 
+composer dump-autoload 
+php artisan key:generate
+
+- **[----------------------]**
+- **[Cargar a git]**
+
+git init
+git remote add origin  URL-DEL-REPOSITORIO
+git add .
+git commit -m "comentario"
+git push origin
+
+
+- **[EJEMPLO]**
+git init
+git remote add origin https://github.com/ingjaz/BLOG.git	
+git add .
+git commit -m "Primer Commit"
+git push origin
