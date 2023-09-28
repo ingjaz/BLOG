@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+//Con esta linea estamos mandando a llamar el contrtolador que quiero utilizar
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CursoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,27 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    //return view('welcome');
-    return "Hola mundo";
-});
+Route::get('/', HomeController::class);
 
-Route::get('cursos', function () {
-    return "Bienvenido a cursos";
-});
+Route::get('cursos', [CursoController::class, "index"]);
 
-Route::get('cursos/create', function () {
-    return "En esta pagina podras crear un curso";
-});
+Route::get('cursos/create', [CursoController::class, "create"] );
 
- /*Route::get('cursos/{curso}', function ($curso){
-    return "Bienvenido al curso: $curso";
- });*/
+Route::get('cursos/{curso}', [CursoController::class, "show"] );
 
  //Si queremos que alguna variable sea opcional solo basta con poner
  //el simbolo de ? al final de cada variable de este tipo
  //Si hacemos esto tenemos que incializar la variable como null
-
+/*
  Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
     //El if si dejo la variable sin una condicion logica equivale a evaluar $categoria != null)
     if($categoria){
@@ -42,4 +37,4 @@ Route::get('cursos/create', function () {
         return "Bienvenido al curso: $curso";
     }
  });
-
+*/
