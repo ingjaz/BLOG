@@ -74,11 +74,13 @@ Si descargamos una copia de laravel de github hacer lo siguiente:
  composer install
 
 - **[-Después cambiar el nombre del .env.example por .env]**
+
  mv .env.example .env
 
 - **[-limpiar cache]**
 
  php artisan cache:clear
+
  composer dump-autoload
 
 - **[-y por último generar el key]**
@@ -86,26 +88,56 @@ Si descargamos una copia de laravel de github hacer lo siguiente:
 php artisan key:generate
 
 - **[----------------------]**
+
 THE CODE TO COPY AND PASTE
+
 composer install 
+
 mv .env.example .env 
-php artisan cache:clear 
+
+php artisan cache:clear
+
 composer dump-autoload 
+
 php artisan key:generate
 
 - **[----------------------]**
+
 - **[Cargar a git]**
 
 git init
+
 git remote add origin  URL-DEL-REPOSITORIO
+
 git add .
+
 git commit -m "comentario"
+
 git push origin
 
 
 - **[EJEMPLO]**
+
 git init
+
 git remote add origin https://github.com/ingjaz/BLOG.git	
+
 git add .
+
 git commit -m "Primer Commit"
+
 git push origin
+
+- **[CONTROLLER COMO CREARLOS]**
+
+- **[-Sirve para crear controladores, generar modelos, para crear migraciones]**
+ 
+php artisan make
+
+- **[--Para crear un controlado]**
+
+php artisan make:controller nombre_controladorController
+
+- **[-ejemplo crear controlador]**
+
+php artisan make:controller HomeController
