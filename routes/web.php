@@ -19,11 +19,14 @@ use App\Http\Controllers\CursoController;
 
 Route::get('/', HomeController::class);
 
-Route::get('cursos', [CursoController::class, "index"]);
+//Creacion de grupos para controladores, esto es, si hay varias rutas con el mismo controlador
+//estas se pueden agrupar en un solo bloque
+Route::controller(CursoController::class)->group(function () {
+    Route::get('cursos', 'index');
+    Route::get('cursos/create', 'create');
+    Route::get('cursos/{curso}', 'show');
+});
 
-Route::get('cursos/create', [CursoController::class, "create"] );
-
-Route::get('cursos/{curso}', [CursoController::class, "show"] );
 
  //Si queremos que alguna variable sea opcional solo basta con poner
  //el simbolo de ? al final de cada variable de este tipo
