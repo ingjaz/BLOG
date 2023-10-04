@@ -7,71 +7,56 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Aqui me quede
-    https://www.youtube.com/watch?v=MUOKdpbgbNk&list=PLZ2ovOgdI-kWWS9aq8mfUDkJRfYib-SvF&index=11
+## Notas
+    Las vistas se crean mamuanlmente con extencion blade.php en la ruta resources/views 
 
 ## EN CASO DE DESCARGAR COPIA DE LARAVEL 
 
 Si descargamos una copia de laravel de github hacer lo siguiente:
 
 - **[-El primer paso fue instalar composer dentro de la carpeta del proyecto]**
-
- composer install
+    composer install
 
 - **[-Después cambiar el nombre del .env.example por .env]**
-
- mv .env.example .env
+    mv .env.example .env
 
 - **[-limpiar cache]**
 
- php artisan cache:clear
-
- composer dump-autoload
+    php artisan cache:clear
+    composer dump-autoload
 
 - **[-y por último generar el key]**
 
-php artisan key:generate
+    php artisan key:generate
 
 - **[----------------------]**
 
 THE CODE TO COPY AND PASTE
 
-composer install 
-
-mv .env.example .env 
-
-php artisan cache:clear
-
-composer dump-autoload 
-
-php artisan key:generate
+    composer install 
+    mv .env.example .env 
+    php artisan cache:clear
+    composer dump-autoload 
+    php artisan key:generate
 
 - **[----------------------]**
 
 - **[Cargar a git]**
 
-git init
-
-git remote add origin  URL-DEL-REPOSITORIO
-
-git add .
-
-git commit -m "comentario"
-
-git push origin
+    git init
+    git remote add origin  URL-DEL-REPOSITORIO
+    git add .
+    git commit -m "comentario"
+    git push origin
 
 
 - **[EJEMPLO]**
 
-git init
-
-git remote add origin https://github.com/ingjaz/BLOG.git	
-
-git add .
-
-git commit -m "Primer Commit"
-
-git push origin
+    git init
+    git remote add origin https://github.com/ingjaz/BLOG.git	    
+    git add .
+    git commit -m "Primer Commit"
+    git push origin
 
 - **[----------------------]**
 
@@ -90,6 +75,7 @@ git push origin
     php artisan make
 
 - **[--Para crear un controlado]**
+    Este se crea en la ruta app/Http/Controllers
 
     php artisan make:controller nombre_controladorController
 
@@ -107,7 +93,7 @@ Este comando ejecutada en terminal sirve para recorrrer uno a uno las migracione
 
     php artisan migrate
 
-Este comando sirve para cerar el archivo para una migracion
+Este comando sirve para cerar el archivo para una migracion, el archivo se crea en la ruta database/migrations/
 
     php artisan make:migration nombre-archivo
 
@@ -166,3 +152,54 @@ Este comando ejecuta le metodo "down" primero y despues el metodo up, elimina to
     Ejemplo:
 
          php artisan make:migration cambiar_propiedades_to_user_table
+
+- **[----------------------]**
+
+- **[ELOQUENT]**
+    Este comando sirve para hacer modelos, esta funciona con una conversion hacia la tabla que va a atender de singualr a plural, por ejemplo
+    si la tabla se llama "cursos" el modelo se debe llamar "Curso" (notese que se crea con mayuscula pero la tabla va en minuscula y en plural)
+    esta conversion se lleva a cabo con la lengua inglesa, si lo ponemos en español el sistema solo pondra una "s" al final, por ejmplo si
+    creamos un modelo llamada "Nivel" la tabla a la que apuntaria seria "Nivels" pero si usamos el inglés esta conversion se hace sin problemas,
+    por ejemplo si creamos un modelo llamado "Category" la tabla se deberia de llamar "categories". El comando que utilizamos es:
+
+        php artisan make:model NOMBRE-MODELO
+
+    Por ejemplo, tenemos una tabala llamada cursos, el archivo se crea en la ruta app/Models/Curso.php
+
+        php artisan make:model Curso
+
+- **[----------------------]**
+
+- **[Tinker]**
+
+    Tinker te permite interactuar con toda tu aplicación Laravel en la línea de comando, incluidos tus modelos, trabajos, eventos y más de 
+    Eloquent. Para ingresar al entorno Tinker, ejecute el comando Tinker Artisan:
+
+        php artisan tinker
+    
+    Despues una vez dentro (cuando ejecutamos el comando estamos dentro) hay que especificar el modelo con el siguiente comando:
+
+        use RUTA-MODELO;
+    Ejemplo
+        use App\Models\Curso;
+    Creamos una instancia:
+        $variable = new ARCHIVO-DEL-OBJETO;
+    Ejemplo
+        $curso = new Curso;
+    Despues agregamos propiedades (columnas) y les ingresamos valor
+        $curso->COLUMNA = 'VALOR';
+    Ejemplo
+        $curso->name = 'Laravel';
+
+    Para verl el contenido de la variable solamente ponemos la misma y presionamos enter
+        $VARIABLE;
+    Ejemplo
+        $curso;
+    
+    Si queremos que guarde esto como un registro ejecutamos lo siguiente:
+        $VARIABLE->save();
+    Ejemplo
+        $curso->save();
+
+    Una vez ejecuta el save si vuelvo a llamar a la variable podremos ver todo lo que se guardo en mysql:
+        $VARIABLE();
