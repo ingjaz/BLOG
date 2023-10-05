@@ -246,10 +246,32 @@ THE CODE TO COPY AND PASTE
 
         php artisan make:seeder CursoSeeder
 
-    Si queremos leer el nuevo archivo seeder tenemos que hacer lo siguiente, mandar a llamar le archivo nuevo en DatabaseSeeder.php
+    Si queremos leer el nuevo archivo seeder tenemos que hacer lo siguiente, mandar a llamar le archivo nuevo en DatabaseSeeder.php:
 
         $this->call(NOMBRE::class);
 
     Ejemplo
 
         $this->call(CursoSeeder::class);
+
+- **[----------------------]**
+
+- **[Factory's]**
+
+    Este sirve para rellenar tablas con informacion de manera aleatoria, muy funcional para insertar infromacion rapida y en gran cantidad, para esto crearemos un nuevo archivo tipo factory, este archiv se almacena en la ruta database/factories:
+
+        php artisan make:factory NOMBRE  --model=NOMBRE-MODELO
+
+    Ejemplo
+
+        php artisan make:factory CursoFactory --model=Curso
+
+    Una vez terminado hay que agregar el factory en un Sedeer, para esto nos dirigimos al seeder donde queremos ejecutar el factory, por ejemplo yo me fui al seeder "CursoSeeder" y dentro agregue esta linea:
+
+        NOMBRE-MODELO::factory(CANTIDAD-DE-REGISTROS)->create();
+    
+    Ejemplo
+
+        Curso::factory(50)->create();
+
+    

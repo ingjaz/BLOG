@@ -14,6 +14,7 @@ class CursoSeeder extends Seeder
      */
     public function run(): void
     {
+        /*
         $curso = new Curso();
 
         $curso->name = "Laravel";
@@ -29,5 +30,8 @@ class CursoSeeder extends Seeder
         $curso2->categoria = "Desarrollo web";
 
         $curso2->save();
+        */
+        //Mando a llamar a mi factory Curso para crear 50 registros
+        Curso::factory(50)->create();
     }
 }

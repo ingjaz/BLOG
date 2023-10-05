@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Curso;
+//use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -38,6 +39,10 @@ class DatabaseSeeder extends Seeder
         $curso2->save();
         */
 
+        //Otra forma de llamar un fatory dentro de un Seeder
+        \App\Models\User::factory(10)->create();
+
+        //Aqui estoy mandando a llamar a mi Seeder que cree llamado CursoSeeder
         $this->call(CursoSeeder::class);
 
     }
