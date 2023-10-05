@@ -87,40 +87,38 @@ THE CODE TO COPY AND PASTE
 
 - **[-MIGRACIONES]**
 
-Este comando ejecutada en terminal sirve para recorrrer uno a uno las migraciones
- que hemos creado entrando y ejecutando el metodo up para crear las respectivas tablas con sus
- columnas
+    Este comando ejecutada en terminal sirve para recorrrer uno a uno las migraciones
+    que hemos creado entrando y ejecutando el metodo up para crear las respectivas tablas con sus
+    columnas
 
-    php artisan migrate
+        php artisan migrate
 
-Este comando sirve para cerar el archivo para una migracion, el archivo se crea en la ruta database/migrations/
+    Este comando sirve para cerar el archivo para una migracion, el archivo se crea en la ruta database/migrations/
 
-    php artisan make:migration nombre-archivo
+        php artisan make:migration nombre-archivo
 
-    php artisan make:migration cursos
+        php artisan make:migration cursos
 
-Tambien podemos hacer las tablas mucho mas rapido con el comando
+    Tambien podemos hacer las tablas mucho mas rapido con el comando
 
-    php artisan make:migration create_nombre-archivo_table
+        php artisan make:migration create_nombre-archivo_table
 
-    php artisan make:migration create_cursos_table
+        php artisan make:migration create_cursos_table
 
-Para revertir los cambios de la ultima migracion ejecutada usa le comando
+    Para revertir los cambios de la ultima migracion ejecutada usa le comando
 
-    php artisan migrate:rollback
+        php artisan migrate:rollback
 
-Otro comando para eliminar y crear tablas de un solo movimiento sin ejecutar rollback
- a cada momento, este comando elimina todas la stablas y despues la va creando,
- este metodo es destructivo en productivo porque elimina tola la informacion guardada  pero eficiente cuando
- estamos construllendo las tablas
+    Otro comando para eliminar y crear tablas de un solo movimiento sin ejecutar rollback
+    a cada momento, este comando elimina todas la stablas y despues la va creando,
+    este metodo es destructivo en productivo porque elimina tola la informacion guardada  pero eficiente cuando
+    estamos construllendo las tablas
 
-    php artisan migrate:fresh
+        php artisan migrate:fresh
 
-Este comando ejecuta le metodo "down" primero y despues el metodo up, elimina todas la tablas, la diferencia con "fresh"
- es que "fresh" no toca el metodo "down" solo elimina y "refresh" si invoca el medoto down por lo que si te equivocaste
- en este metodo al crearlo lo brincara.
+    Este comando ejecuta le metodo "down" primero y despues el metodo up, elimina todas la tablas, la diferencia con "fresh" es que "fresh" no toca el metodo "down" solo elimina y "refresh" si invoca el medoto down por lo que si te equivocaste en este metodo al crearlo lo brincara.
 
-    php artisan migrate:refresh
+        php artisan migrate:refresh
 
 - **[----------------------]**
 
@@ -156,11 +154,7 @@ Este comando ejecuta le metodo "down" primero y despues el metodo up, elimina to
 - **[----------------------]**
 
 - **[ELOQUENT]**
-    Este comando sirve para hacer modelos, esta funciona con una conversion hacia la tabla que va a atender de singualr a plural, por ejemplo
-    si la tabla se llama "cursos" el modelo se debe llamar "Curso" (notese que se crea con mayuscula pero la tabla va en minuscula y en plural)
-    esta conversion se lleva a cabo con la lengua inglesa, si lo ponemos en español el sistema solo pondra una "s" al final, por ejmplo si
-    creamos un modelo llamada "Nivel" la tabla a la que apuntaria seria "Nivels" pero si usamos el inglés esta conversion se hace sin problemas,
-    por ejemplo si creamos un modelo llamado "Category" la tabla se deberia de llamar "categories". El comando que utilizamos es:
+    Este comando sirve para hacer modelos, esta funciona con una conversion hacia la tabla que va a atender de singualr a plural, por ejemplo si la tabla se llama "cursos" el modelo se debe llamar "Curso" (notese que se crea con mayuscula pero la tabla va en minuscula y en plural) esta conversion se lleva a cabo con la lengua inglesa, si lo ponemos en español el sistema solo pondra una "s" al final, por ejmplo si creamos un modelo llamada "Nivel" la tabla a la que apuntaria seria "Nivels" pero si usamos el inglés esta conversion se hace sin problemas, por ejemplo si creamos un modelo llamado "Category" la tabla se deberia de llamar "categories". El comando que utilizamos es:
 
         php artisan make:model NOMBRE-MODELO
 
@@ -172,34 +166,90 @@ Este comando ejecuta le metodo "down" primero y despues el metodo up, elimina to
 
 - **[Tinker]**
 
-    Tinker te permite interactuar con toda tu aplicación Laravel en la línea de comando, incluidos tus modelos, trabajos, eventos y más de 
-    Eloquent. Para ingresar al entorno Tinker, ejecute el comando Tinker Artisan:
+    Tinker te permite interactuar con toda tu aplicación Laravel en la línea de comando, incluidos tus modelos, trabajos, eventos y más de Eloquent. Para ingresar al entorno Tinker, ejecute el comando Tinker Artisan:
 
         php artisan tinker
     
     Despues una vez dentro (cuando ejecutamos el comando estamos dentro) hay que especificar el modelo con el siguiente comando:
 
         use RUTA-MODELO;
+
     Ejemplo
+
         use App\Models\Curso;
+
     Creamos una instancia:
+
         $variable = new ARCHIVO-DEL-OBJETO;
+
     Ejemplo
+
         $curso = new Curso;
+
     Despues agregamos propiedades (columnas) y les ingresamos valor
+
         $curso->COLUMNA = 'VALOR';
+
     Ejemplo
+
         $curso->name = 'Laravel';
 
     Para verl el contenido de la variable solamente ponemos la misma y presionamos enter
+
         $VARIABLE;
+
+
     Ejemplo
+
         $curso;
     
     Si queremos que guarde esto como un registro ejecutamos lo siguiente:
+
         $VARIABLE->save();
+
     Ejemplo
+
         $curso->save();
 
     Una vez ejecuta el save si vuelvo a llamar a la variable podremos ver todo lo que se guardo en mysql:
+
         $VARIABLE();
+
+- **[----------------------]**
+
+- **[Seeders]**
+
+    Los Seeders sirve para poder agregar datos demo en las tablas de nuestra bases de datos, para esto hay que dirigirnos a database/seeders y abrir el archivo DatabaseSeeder.php, alli usaremos lo que aprendimos en tinker.
+    Una vez aplicado tenemos la opcion de eliminra las tablas para volverlas a crear con el comando:
+
+        php artisan migrate:refresh
+
+    Y podemos ejecutar otro comando para poder crear las tablas, este comando es altamente recomendable siempre y cuando nos encontremos en el entorno de prueba y programacion
+
+        php artisan migrate:fresh 
+
+    Una vez echo esto podemos ejecutar lo que hicimos en seeder para generar los datos con el siguiente comando:
+
+        php artisan db:seed
+
+    Para evitar ejecutar los dos comandos por separado podemos uysar el siguiente
+
+        php artisan migrate:fresh --seed
+    
+**[Crear nuevo Seeder]**
+
+    Para crear una nuevo seeder ejecutamos el siguiente comando:
+
+        php artisan make:seeder NOMBRE
+
+    Ejemplo
+
+        php artisan make:seeder CursoSeeder
+
+    Si queremos leer el nuevo archivo seeder tenemos que hacer lo siguiente, mandar a llamar le archivo nuevo en DatabaseSeeder.php
+
+        $this->call(NOMBRE::class);
+
+    Ejemplo
+
+        $this->call(CursoSeeder::class);
