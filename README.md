@@ -215,6 +215,51 @@ THE CODE TO COPY AND PASTE
 
         $VARIABLE();
 
+ **[Tinker Consultas]**
+
+    Algunas consultas de tinker, todas se pueden combinar (cada propiedad)
+
+        //La propieda ->first(); y ->get(); devuelven los valores de manera diferente, ->first(); los devuleve de uno en uno y ->get(); los devuleve en una coleccion de tipo arreglo
+
+        //Devuelve todos los elemntos de la tabla  
+        $cursos = Curso::all(); 
+
+        //devuelve los elementos de la tabla seleccionados "where" con un diseno de todos los campos "get"
+        $cursos = Curso::where('categoria', 'Diseno Web')->get(); 
+
+        //devuelve los elementos de la tabla seleccionados "where" con un diseno de todos los campos "get" con un orden seleccionado
+        $cursos = Curso::where('categoria', 'Diseno Web')orderBy('id','desc')->get();
+
+        //devuelve el primer elemnto d ela consulta de la tabla seleccionado "where" con un diseno de todos los campos con un orden seleccionado
+        $cursos = Curso::where('categoria', 'Diseno Web')orderBy('id','desc')->first();
+
+        //Si quiero solo un campo de esa consulta anterior uso:
+        $curso->name;
+
+        //Esto es un select para seleccionar ciertos campos
+        $cursos = Curso::select('name','description')->get();  
+
+        //Esto es un select para seleccionar ciertos campos y devuelve el primer elemnto d ela consulta de la tabla seleccionado "where" con un diseno de todos los campos con un orden seleccionado
+        $cursos = Curso::select('name', 'description')->where('categoria', 'Diseno Web')->orderBy('name','asc')->first();  
+
+        //Cambiar cam,pos con seudonimo
+        $cursos = Curso::select('name as titulo','description as algo')->get();
+
+        //La propiedad take se usa para decidir cuantos registro me tiene que devolver
+        $cursos = Curso::select('name as titulo','description as algo')->take(2)->get();  
+
+        //Buscar por ide hay dos maneras:
+        $cursos = Curso::where('id', 5)->first(); 
+        $cursos = Curso::find(5); 
+
+        //Ahora tambien con esto puedo acceder a un campo en especifico
+        $curso->name;
+
+        //La propiedad where con mas de dos parametros
+        $cursos = Curso::where('id', '>', 45)->first(); 
+        $cursos = Curso::where('name', 'like', '%casa')->first(); 
+
+
 - **[----------------------]**
 
 - **[Seeders]**
