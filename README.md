@@ -10,6 +10,13 @@
 ## Notas
     Las vistas se crean mamuanlmente con extencion blade.php en la ruta resources/views 
 
+## Desvincular github de vs code
+
+    Lo que esta pasando es que el nombre de los commits se configura localmente, que es diferente de los permisos que tiene una persona para un proyecto. Intenta cambiando tu email y nombre de esta manera:
+
+    git config --global user.name "NOMBRE"
+    git config --global user.email "CORREO@example.com"
+
 ## EN CASO DE DESCARGAR COPIA DE LARAVEL 
 
 Si descargamos una copia de laravel de github hacer lo siguiente:
