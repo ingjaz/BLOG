@@ -35,6 +35,15 @@ class CursoController extends Controller
     }
 
     public function store(Request $request){
+        //Validar informacion, asi se valida con un request, en este caso se valida que los campos no esten en blanco (son requeridos)
+        //Para agregar mas reglas en un campo basta con separarlos con "|" y poner la regla que queremos agregar
+        $request->validate([
+            'name' => 'required|min:3|max:20|alpha:ascii',
+            'description' => 'required|min:3|max:20',
+            'categoria' => 'required|min:3|max:20|alpha:ascii'
+        ]);
+
+
         //Recupero y veo todo el contenido que se envio por metodo POST
         //return $request->all();
 
@@ -72,6 +81,14 @@ class CursoController extends Controller
     }
 
     public function update(Request $request, Curso $id){
+        $request->validate([
+            'name' => 'required|min:3|max:20|alpha:ascii',
+            'description' => 'required|min:3|max:20',
+            'categoria' => 'required|min:3|max:20|alpha:ascii'
+        ]);
+
+        
+
         //Recupero y veo todo el contenido que se envio por metodo POST - PUT
         //return $id;
         //return $request->all();

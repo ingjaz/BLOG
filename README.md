@@ -326,4 +326,20 @@ THE CODE TO COPY AND PASTE
 
         Curso::factory(50)->create();
 
-    
+- **[----------------------]**
+
+- **[Cambiar idioma]**
+    Para cambiar el idioma hay que crear primero la carpeta que contiene esta informacion, esto se logra ejecutando el siguiente comando el cual creara un acarpeta llamada lang:
+
+        php artisan lang:publish
+
+    Ahora agregaremos el idioma con un paquete de laravel, usareml el lang de laravel, ejecutaremos el siguiente comando
+
+        composer require laravel-lang/common --dev
+
+    Una vez instalado ejecurtamo el sigueinte comando, la palabra final indica que idioma descargaremos, por ejemplo php artisan lang:add fr, fr indica frances, si quieremos ver ma sentrar a https://laravel-lang.com/
+
+        php artisan lang:add es
+
+    Con esto se creara una carpeta en Lang con el idioima descargado, ahora si queremos cambiar el idioma cargado tenenos que ir a app/config/app.php y buscar "locale" y cambiar el idioma de "en" al idioma que querramos, por ejemplo "es"
+

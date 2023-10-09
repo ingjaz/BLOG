@@ -13,27 +13,45 @@
         @csrf
 
         {{-- Cuando queremos utilizar una ruta PUT devemos dejar el metodo post indicado y llamar al metodo put de la sigueinte manera  --}}
-        @method('put')
+        @method('PUT')
 
         <label for="">
             Nombre:
             <br>
-            <input type="text" name="name" value="{{$id->name}}">
+            <input type="text" name="name" value="{{old('name', $id->name)}}">
         </label>
+
+        @error('name')
+            <br>
+            <span>{{ $message }}</span>
+            <br>
+        @enderror
         <br>
 
         <label for="">
             Descripcion
             <br>
-            <input type="text" name="description" value="{{$id->description}}">
+            <textarea name="description" id="" cols="30" rows="5">{{old('description', $id->description)}}</textarea>
         </label>
+        {{-- La funcion error nos sirve para que nos envie el error de evaluacion a 
+            partir de la funcion $request->validate dada en el controlador dentro de la funcion que invica la vista--}}
+        @error('description')
+            <br>
+            <span>{{ $message }}</span>
+            <br>
+        @enderror
         <br>
 
         <label for="">
             Categoria:
             <br>
-            <input type="text" name="categoria" value="{{$id->categoria}}">
+            <input type="text" name="categoria" value="{{old('categoria', $id->categoria)}}">
         </label>
+        @error('categoria')
+            <br>
+            <span>{{ $message }}</span>
+            <br>
+        @enderror
         <br>
         <br>
         <button type="submit">Actualizar formulario</button>
