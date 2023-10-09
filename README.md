@@ -10,6 +10,14 @@
 ## Notas
     Las vistas se crean mamuanlmente con extencion blade.php en la ruta resources/views 
 
+- **[----------------------]**
+
+- **[DESACTIVAR ERRORES LARAVEL]**
+    Para desactivar errores en laravel solo debeos entra al rachivo .env buscar APP_DEBUG y cambiar el true por el false y guardar, adicional ir al archivo config>>app.php y buscar la entrada 'debug' => env('APP_DEBUG', false), si queremos que se active el debug cambiar a true, si no conservarlo como esta.
+
+
+- **[----------------------]**
+
 ## Desvincular github de vs code
 
     Lo que esta pasando es que el nombre de los commits se configura localmente, que es diferente de los permisos que tiene una persona para un proyecto. Intenta cambiando tu email y nombre de esta manera:
@@ -342,4 +350,15 @@ THE CODE TO COPY AND PASTE
         php artisan lang:add es
 
     Con esto se creara una carpeta en Lang con el idioima descargado, ahora si queremos cambiar el idioma cargado tenenos que ir a app/config/app.php y buscar "locale" y cambiar el idioma de "en" al idioma que querramos, por ejemplo "es"
+
+- **[----------------------]**
+
+- **[Form Request]**
+    Sirve para crear archivos de validacion por separado y evitar llenar los controller de validaciones lo cual puede a la larga verse muy saturado en el mismo, con esto podemos asegurar que nuestro codigo se vera mas limpio, al ejecutarlo creara un acarpeta con la ruta app\Http\Request, recuerda en el controlador incluir la libreria "use App\Http\Requests\NOMBRE; " para crear un archivo asi utilizaremos el siguiente comando:
+
+        php artisan make:request NOMBRE
+
+    Ejemplo:
+
+        php artisan make:request StoreCurso       
 

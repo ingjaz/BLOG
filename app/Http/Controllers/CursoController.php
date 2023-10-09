@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 
+//Se agrego esta libreria para usar el archivo que generamos de Request
+use App\Http\Requests\StoreCursoRequest;
+
+
 class CursoController extends Controller
 {
     public function index(){
@@ -34,14 +38,16 @@ class CursoController extends Controller
         return view('cursos.create');
     }
 
-    public function store(Request $request){
+    public function store(StoreCursoRequest $request){
         //Validar informacion, asi se valida con un request, en este caso se valida que los campos no esten en blanco (son requeridos)
+        //Necesita variables tipo "Request", por ejemplo Request $request
         //Para agregar mas reglas en un campo basta con separarlos con "|" y poner la regla que queremos agregar
-        $request->validate([
+        /*$request->validate([
             'name' => 'required|min:3|max:20|alpha:ascii',
             'description' => 'required|min:3|max:20',
             'categoria' => 'required|min:3|max:20|alpha:ascii'
-        ]);
+        ]);*/
+
 
 
         //Recupero y veo todo el contenido que se envio por metodo POST
