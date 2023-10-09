@@ -14,7 +14,12 @@ class CursoController extends Controller
         //$cursos = Curso::all();
         //recupero los cursos paginados, para pderlos ver despues de la url agrego ?page=x
         //ejemplo http://localhost/BLOG/public/cursos?page=2
-        $cursos = Curso::paginate();
+        //Muestra en esta linea todos los cursos en orden Ascendente
+        //$cursos = Curso::paginate();
+
+        $cursos = Curso::orderBy('id', 'desc')->paginate();
+
+
         //Aqui me devuelve todo lo consultado en formato json
         //return $cursos;
 
@@ -27,6 +32,22 @@ class CursoController extends Controller
     public function create(){
         //return "En esta pagina podras crear un curso";
         return view('cursos.create');
+    }
+
+    public function store(Request $request){
+        //Recupero y veo todo el contenido que se envio por metodo POST
+        //return $request->all();
+
+        $curso = new Curso();
+        $curso->name = $request->name;
+        $curso->description = $request->description;
+        $curso->categoria = $request->categoria;
+
+        //return $curso;
+        $curso->save();
+
+        return redirect()->route('cursos.show', $curso->id);
+
     }
 
     public function show($id){

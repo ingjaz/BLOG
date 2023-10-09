@@ -19,15 +19,27 @@ use App\Http\Controllers\CursoController;
 
 Route::get('/', HomeController::class);
 
+Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');
+
+Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create'); 
+Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store'); 
+
+Route::get('cursos/{id}', [CursoController::class, 'show'])->name('cursos.show');
+
 //Creacion de grupos para controladores, esto es, si hay varias rutas con el mismo controlador
 //estas se pueden agrupar en un solo bloque
 //el ->name('NOMBRE'); me permite poner un alias al acceso de la ruta y con ella acceder
-Route::controller(CursoController::class)->group(function () {
+/*Route::controller(CursoController::class)->group(function () {
     Route::get('cursos', 'index')->name('cursos.index');
+    
     // esto es lo mismo que el de abajo:   Route::get('sasasa', 'create')->name('cursos.create'); 
     Route::get('cursos/create', 'create')->name('cursos.create');  
+
+    //Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');   Si estuviera fuera del grupo asi seria
+    Route::post('cursos', 'store')->name('cursos.store');
+
     Route::get('cursos/{id}', 'show')->name('cursos.show');
-});
+});*/
 
 
  //Si queremos que alguna variable sea opcional solo basta con poner
