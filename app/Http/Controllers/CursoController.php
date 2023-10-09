@@ -62,4 +62,29 @@ class CursoController extends Controller
        return view('cursos.show', compact('curso'));
     }
 
+    //Al crear una variable de la misma clase se obtiene todos los dtaos
+    //es igual a esto $curso = Curso::find($id); cuando el parametro es solo $id (sin la palabra Curso (la clase))
+    public function edit(Curso $id){
+
+        //$curso = Curso::find($id);
+        //return $id;
+        return view('cursos.edit', compact('id'));
+    }
+
+    public function update(Request $request, Curso $id){
+        //Recupero y veo todo el contenido que se envio por metodo POST - PUT
+        //return $id;
+        //return $request->all();
+
+        $id->name = $request->name;
+        $id->description = $request->description;
+        $id->categoria = $request->categoria;
+
+        //return $curso;
+        $id->save();
+
+        return redirect()->route('cursos.show', $id->id);
+
+    }
+
 }

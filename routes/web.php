@@ -26,6 +26,10 @@ Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
 
 Route::get('cursos/{id}', [CursoController::class, 'show'])->name('cursos.show');
 
+Route::get('cursos/{id}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+//Nota cuando quieras actualizar (update) Laravel reciemda el metodo put
+Route::put('cursos/{id}', [CursoController::class, 'update'])->name('cursos.update');
+
 //Creacion de grupos para controladores, esto es, si hay varias rutas con el mismo controlador
 //estas se pueden agrupar en un solo bloque
 //el ->name('NOMBRE'); me permite poner un alias al acceso de la ruta y con ella acceder
