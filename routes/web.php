@@ -29,6 +29,8 @@ Route::get('cursos/{id}', [CursoController::class, 'show'])->name('cursos.show')
 Route::get('cursos/{id}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
 //Nota cuando quieras actualizar (update) Laravel reciemda el metodo put
 Route::put('cursos/{id}', [CursoController::class, 'update'])->name('cursos.update');
+//Eliminar Nota cuando quieras eliminar (delete) Laravel reciemda el metodo delete
+Route::delete('cursos/{id}', [CursoController::class, 'destroy'])->name('cursos.destroy');
 
 //Creacion de grupos para controladores, esto es, si hay varias rutas con el mismo controlador
 //estas se pueden agrupar en un solo bloque

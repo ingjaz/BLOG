@@ -142,4 +142,10 @@ class CursoController extends Controller
 
     }
 
+    public function destroy(Curso $id){
+        $id->delete();
+
+        return redirect()->route('cursos.index');
+    }
+
 }
