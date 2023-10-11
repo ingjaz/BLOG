@@ -360,5 +360,12 @@ THE CODE TO COPY AND PASTE
 
     Ejemplo:
 
-        php artisan make:request StoreCurso       
+        php artisan make:request StoreCurso     
+
+- **[----------------------]**
+
+- **[Rutas]**
+    Para ver las rutas que tenemos en nuestro proyecto por consola s epuede utilizar:
+
+        php artisan r:l
 

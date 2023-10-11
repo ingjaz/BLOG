@@ -19,7 +19,8 @@ use App\Http\Controllers\CursoController;
 
 Route::get('/', HomeController::class);
 
-Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');
+//7 rutas del CRUD de cursos
+/*Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');
 
 Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create'); 
 Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store'); 
@@ -30,7 +31,21 @@ Route::get('cursos/{id}/edit', [CursoController::class, 'edit'])->name('cursos.e
 //Nota cuando quieras actualizar (update) Laravel reciemda el metodo put
 Route::put('cursos/{id}', [CursoController::class, 'update'])->name('cursos.update');
 //Eliminar Nota cuando quieras eliminar (delete) Laravel reciemda el metodo delete
-Route::delete('cursos/{id}', [CursoController::class, 'destroy'])->name('cursos.destroy');
+Route::delete('cursos/{id}', [CursoController::class, 'destroy'])->name('cursos.destroy');*/
+
+//rutas con route resource, podemos hacer mas rapido las rutas, esto se basa en el nombre de las funciones que creamos en los controller
+// si queremos cambiar el nombre usando reosurce podemos basarnos en lo que indica laravel https://laravel.com/docs/10.x/controllers#restful-localizing-resource-uris
+// Devemos ir a la direccion App\Providers\RouteServiceProvider
+Route::resource('cursos', CursoController::class);
+
+//Si queremos cambiarle el nombre principal a la ruta debemso usar la funcion 'names'
+//Route::resource('asignaturas', CursoController::class)->names('cursos');
+
+//Si por lo anterior tenemos problemas en las varibles en los controladores podemso usar un nuevo parametro "parameters"
+//Route::resource('asignaturas', CursoController::class)->parameters(['asignaturas' => 'curso'])->names('cursos');
+
+
+
 
 //Creacion de grupos para controladores, esto es, si hay varias rutas con el mismo controlador
 //estas se pueden agrupar en un solo bloque

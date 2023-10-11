@@ -95,14 +95,14 @@ class CursoController extends Controller
 
     //Al crear una variable de la misma clase se obtiene todos los dtaos
     //es igual a esto $curso = Curso::find($id); cuando el parametro es solo $id (sin la palabra Curso (la clase))
-    public function edit(Curso $id){
+    public function edit(Curso $curso){
 
         //$curso = Curso::find($id);
         //return $id;
-        return view('cursos.edit', compact('id'));
+        return view('cursos.edit', compact('curso'));
     }
 
-    public function update(Request $request, Curso $id){
+    public function update(Request $request, Curso $curso){
         $request->validate([
             'name' => 'required|min:3|max:20|alpha:ascii',
             'description' => 'required|min:3|max:20',
@@ -135,15 +135,15 @@ class CursoController extends Controller
         //Lo siguiente es una manera de aginacion masiva, es lo mismo que lo anterior pero ademas me ahorro el agregar cada campo
         //Al usar este ultimo metodo debemo agregar la propiedad "fillable" para mass assignment
         //Para corregir este problema debo indicar que campos si se van a enviar y cuales no, esto se hace en el modelo, en este caso en Models/Curso.php
-        $id -> update($request->all());
+        $curso -> update($request->all());
 
 
-        return redirect()->route('cursos.show', $id->id);
+        return redirect()->route('cursos.show', $curso->id);
 
     }
 
-    public function destroy(Curso $id){
-        $id->delete();
+    public function destroy(Curso $curso){
+        $curso->delete();
 
         return redirect()->route('cursos.index');
     }

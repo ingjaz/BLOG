@@ -36,5 +36,11 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+        //Aqui es donde estamos cambiado el "name" de las rutas
+        Route::resourceVerbs([
+            'create' => 'crear',
+            'edit' => 'editar',
+        ]);
     }
 }
