@@ -12,7 +12,20 @@ class Curso extends Model
     use HasFactory;
     /*Si yo quiero que el modelo ignore la convension de la tabla que debe de atender a
     partir del nombre del modelo pongo:*/
-    //protected $table = "users";
+        //protected $table = "users";
+
+
+    //En tema de ASIGNACION MASIVA se agrega la variable 
+    //$fillable   Para incicar los campos que SI queremos que se utilicen, los campos que no pongamos en el areglo Eloquent no permitira que se utilicen y 
+    //solo perimitira que se cree el registro con los campos que indicaste en el arreglo
+        //protected $fillable = ['name', 'description', 'categoria'];
+
+    //$guarded Para incicar los campos que NO queremos que se utilicen, los campos que pongamos en el areglo Eloquent no permitira que se utilicen y 
+    //solo perimitira que se cree el registro con los campos que no indicaste en el arreglo
+    //Nota: Si no tenemos nada que proteger de campos podemos dejar el arreglo en blanco y guarded nos permite seguir avanzando
+        protected $guarded = [];
+
+    
 
 
     //Esto es un mutador/accesor el cual modifica el valor que ingrese el usuario, en este caso

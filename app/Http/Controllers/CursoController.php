@@ -53,13 +53,29 @@ class CursoController extends Controller
         //Recupero y veo todo el contenido que se envio por metodo POST
         //return $request->all();
 
-        $curso = new Curso();
+       /* $curso = new Curso();
         $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->categoria = $request->categoria;
 
         //return $curso;
-        $curso->save();
+        $curso->save();*/
+
+        //Vamos a recortar el codigo de arriba para hacerlo mas sencillo, m erefiro al de almacenar la captura de datos de los campos del html
+        //A esto se le conoce como "asignación masiva"
+
+        //Lo siguiente es una manera de aginacion masiva, me crea el objeto, em ahorro el $curso = new Curso(); y el $curso->save();
+        /*$curso = Curso::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'categoria' => $request->categoria
+        ]);*/
+
+        //Lo siguiente es una manera de aginacion masiva, es lo mismo que lo anterior pero ademas me ahorro el agregar cada campo
+        //Al usar este ultimo metodo debemo agregar la propiedad "fillable" para mass assignment
+        //Para corregir este problema debo indicar que campos si se van a enviar y cuales no, esto se hace en el modelo, en este caso en Models/Curso.php
+        $curso = Curso::create($request->all());
+
 
         return redirect()->route('cursos.show', $curso->id);
 
@@ -99,12 +115,28 @@ class CursoController extends Controller
         //return $id;
         //return $request->all();
 
-        $id->name = $request->name;
+        /*$id->name = $request->name;
         $id->description = $request->description;
         $id->categoria = $request->categoria;
 
         //return $curso;
-        $id->save();
+        $id->save();*/
+
+        //Vamos a recortar el codigo de arriba para hacerlo mas sencillo, m erefiro al de almacenar la captura de datos de los campos del html
+        //A esto se le conoce como "asignación masiva"
+
+        //Lo siguiente es una manera de aginacion masiva, me crea el objeto, em ahorro el $curso = new Curso(); y el $curso->save();
+        /*$curso -> update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'categoria' => $request->categoria
+        ]);*/
+
+        //Lo siguiente es una manera de aginacion masiva, es lo mismo que lo anterior pero ademas me ahorro el agregar cada campo
+        //Al usar este ultimo metodo debemo agregar la propiedad "fillable" para mass assignment
+        //Para corregir este problema debo indicar que campos si se van a enviar y cuales no, esto se hace en el modelo, en este caso en Models/Curso.php
+        $id -> update($request->all());
+
 
         return redirect()->route('cursos.show', $id->id);
 
