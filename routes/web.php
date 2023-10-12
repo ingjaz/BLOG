@@ -17,7 +17,7 @@ use App\Http\Controllers\CursoController;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 //7 rutas del CRUD de cursos
 /*Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');
@@ -76,3 +76,7 @@ Route::resource('cursos', CursoController::class);
     }
  });
 */
+
+//Esto nos sirve cuando queremos mostrar ocmntenido estatico, Route::view('URI', 'viewname');
+//Este espera dos parametros, URI el nombre de la url, el segundo viewname es el nombre de la vista
+    Route::view('nosotros', 'nosotros')->name('nosotros');

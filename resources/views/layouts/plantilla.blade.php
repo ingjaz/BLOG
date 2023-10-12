@@ -8,13 +8,25 @@
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <!-- favicom -->
     <!-- estilos -->
+    <style>
+        .active{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <!-- Header-->
     <!-- nav -->
+    @include('layouts.partials.header')
+
+
     @yield('content')
 
     <!-- footer -->
+    @include('layouts.partials.footer')
+
+    
     <!-- script -->
 </body>
 </html>
