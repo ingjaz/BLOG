@@ -28,6 +28,21 @@
         <br>
 
         <label for="">
+            Slug:
+            <br>
+            {{-- El metodo old('NOMBRE-CAMPO') permite recuperar la informacion del pasado al validar un campo --}}
+            <input type="text" name="slug" value="{{old('slug')}}">
+        </label>
+        {{-- La funcion error nos sirve para que nos envie el error de evaluacion a 
+            partir de la funcion $request->validate dada en el controlador dentro de la funcion que invica la vista--}}
+        @error('slug')
+            <br>
+            <span>{{ $message }}</span>
+            <br>
+        @enderror
+        <br>
+
+        <label for="">
             Descripcion
             <br>
             <textarea name="description" id="" cols="30" rows="5">{{old('description')}}</textarea>

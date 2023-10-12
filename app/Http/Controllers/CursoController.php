@@ -77,13 +77,14 @@ class CursoController extends Controller
         $curso = Curso::create($request->all());
 
 
-        return redirect()->route('cursos.show', $curso->id);
+        //return redirect()->route('cursos.show', $curso->id);
+        return redirect()->route('cursos.show', $curso);
 
     }
 
-    public function show($id){
+    public function show(Curso $curso){
 
-        $curso = Curso::find($id);
+        //$curso = Curso::find($id);
 
         //return $curso;
 
@@ -105,6 +106,7 @@ class CursoController extends Controller
     public function update(Request $request, Curso $curso){
         $request->validate([
             'name' => 'required|min:3|max:20|alpha:ascii',
+            'slug' => 'required|unique:cursos,slug,' . $curso->id,
             'description' => 'required|min:3|max:20',
             'categoria' => 'required|min:3|max:20|alpha:ascii'
         ]);
@@ -137,8 +139,8 @@ class CursoController extends Controller
         //Para corregir este problema debo indicar que campos si se van a enviar y cuales no, esto se hace en el modelo, en este caso en Models/Curso.php
         $curso -> update($request->all());
 
-
-        return redirect()->route('cursos.show', $curso->id);
+        //return redirect()->route('cursos.show', $curso->id);
+        return redirect()->route('cursos.show', $curso);
 
     }
 

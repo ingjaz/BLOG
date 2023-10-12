@@ -12,7 +12,11 @@
         {{-- El foreach sirve pide dos cosas, la primera la variable donde se almaceno los datos y dos la variable donde se almacenara la busqueda de navegacion de los datos --}}
         @foreach ($cursos as $curso)
             <li>
-                <a href="{{route('cursos.show', $curso->id)}}">{{$curso->name}}</a>
+                {{-- <a href="{{route('cursos.show', $curso->id)}}">{{$curso->name}}</a> --}}
+                {{-- <a href="{{route('cursos.show', $curso->name)}}">{{$curso->name}}</a> --}}
+                {{-- Gracias a que usamos la funcion getRouteKeyname() en Models\Curso.php no ocupamos definir
+                     el valor que le mandaremos a cursos.show, laravel lo detecta en automaticon con al funcion--}}
+                <a href="{{route('cursos.show', $curso)}}">{{$curso->name}}</a>
             </li>
         @endforeach
     </ul>

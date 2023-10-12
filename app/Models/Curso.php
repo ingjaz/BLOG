@@ -26,6 +26,13 @@ class Curso extends Model
         protected $guarded = [];
 
     
+    //
+    public function getRouteKeyname()
+    {
+        return 'slug';
+    }
+
+    
 
 
     //Esto es un mutador/accesor el cual modifica el valor que ingrese el usuario, en este caso

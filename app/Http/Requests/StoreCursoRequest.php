@@ -26,6 +26,7 @@ class StoreCursoRequest extends FormRequest
         //Para agregar mas reglas en un campo basta con separarlos con "|" y poner la regla que queremos agregar
         return [
             'name' => 'required|min:3|max:20|alpha:ascii',
+            'slug' => 'required|unique:cursos',
             'description' => 'required|min:3|max:20',
             'categoria' => 'required|min:3|max:20|alpha:ascii'
         ];

@@ -21,6 +21,7 @@ class CursoFactory extends Factory
     {
         return [
             'name' => fake()->name(), 
+            'slug' => fake()->slug(),
             'description' => fake()->paragraph(), 
             'categoria' => fake()->randomElement(['Desarrollo Web', 'Diseno Web'])
         ];
