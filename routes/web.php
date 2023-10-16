@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactanosController;
 use Illuminate\Support\Facades\Route;
 
 //Con esta linea estamos mandando a llamar el contrtolador que quiero utilizar
@@ -83,9 +84,14 @@ Route::resource('cursos', CursoController::class);
 //Este espera dos parametros, URI el nombre de la url, el segundo viewname es el nombre de la vista
     Route::view('nosotros', 'nosotros')->name('nosotros');
 
-//Para enviar correos
- Route::get('contactanos', function () {
+//Para enviar correos prueba
+ /*Route::get('contactanos', function () {
      Mail::to('ingjaz_236@hotmail.com')->send(new ContactanosMailable);
 
      return "Mensaje enviado";
- })->name('contactanos');
+ })->name('contactanos');*/
+
+//Para crear formulario
+    Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
+//Para enviar formulario
+    Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');

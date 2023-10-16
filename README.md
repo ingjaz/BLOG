@@ -369,3 +369,14 @@ THE CODE TO COPY AND PASTE
 
         php artisan r:l
 
+- **[----------------------]**
+
+- **[-MAIL]**
+    Para usart mails dentro de nuestro proyecto hay que configurarlo desde .env, buscamos el bloque que incie con "MAIL_MAILER=smtp" y alli agregamos los datso solicitados
+    Despues crearemos el archivo en larabel con el comando:
+
+        php artisan make:mail NOMBRE
+
+    Por ejemplo
+
+        php artisan make:mail ContactanosMailable
