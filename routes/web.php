@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 //Con esta linea estamos mandando a llamar el contrtolador que quiero utilizar
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursoController;
+use App\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,3 +82,10 @@ Route::resource('cursos', CursoController::class);
 //Esto nos sirve cuando queremos mostrar ocmntenido estatico, Route::view('URI', 'viewname');
 //Este espera dos parametros, URI el nombre de la url, el segundo viewname es el nombre de la vista
     Route::view('nosotros', 'nosotros')->name('nosotros');
+
+//Para enviar correos
+ Route::get('contactanos', function () {
+     Mail::to('ingjaz_236@hotmail.com')->send(new ContactanosMailable);
+
+     return "Mensaje enviado";
+ })->name('contactanos');
