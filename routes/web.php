@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-});*/
+});
 
 Route::middleware([
     'auth:sanctum',
@@ -36,7 +36,7 @@ Route::middleware([
 
 /*-------------------------*/
 
-Route::get('/', HomeController::class)->name('home');
+//Route::get('/', HomeController::class)->name('home');
 
 //7 rutas del CRUD de cursos
 /*Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');

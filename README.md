@@ -422,3 +422,10 @@ THE CODE TO COPY AND PASTE
 
         php artisan make:mail ContactanosMailable
 		
+
+
+https://www.tailwindawesome.com/?price=free&type=template
+
+Revisar para foto de jetstream
+https://jetstream.laravel.com/features/profile-management.html
+https://laravel.com/docs/10.x/filesystem#the-public-disk
