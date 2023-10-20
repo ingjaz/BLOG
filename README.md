@@ -30,15 +30,16 @@
     Primero hay que crear un archivo .git con el siguiente comnado
         
         git init
+        git remote add origin https://github.com/ingjaz/BLOG.git
         git add .
         git commit -m "first commit"
+
+        git stash
+        git push -uf origin master
     
     Elegimos la rama, si es la principal dejamos la palabra main
 
         git branch -M main
-    
-
-        git remote add origin https://github.com/ingjaz/BLOG.git
         
         git push -u origin main
 	
